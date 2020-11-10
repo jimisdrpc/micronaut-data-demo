@@ -2,16 +2,31 @@ package com.mybank.service
 
 import com.mybank.model.Account
 import com.mybank.model.AccountHolder
+import com.mybank.repository.AccountHolderRepository
 import io.micronaut.aop.Around
+import io.micronaut.transaction.annotation.TransactionalAdvice
+import javax.inject.Inject
 import javax.inject.Singleton
 import javax.persistence.EntityManager
 import javax.persistence.PersistenceContext
 import javax.transaction.Transactional
 
-@Singleton
-@Around
-class AccountHolderService (@PersistenceContext val entityManager: EntityManager) {
-//    @Transactional @ReadOnly
+
+class AccountHolderService () {
+    @Inject
+    lateinit var accountHolderRepository: AccountHolderRepository
+
+    fun addAccountHolder(ah: AccountHolder) : AccountHolder {
+        //accountHolderRepository.save(ah)
+        return ah
+    }
+
+}
+
+//@Singleton
+//@Around
+//class AccountHolderService (@PersistenceContext val entityManager: EntityManager) {
+//
 //    fun findAccountHolder(email : String) : AccountHolder? {
 //        return try {
 //            entityManager.createQuery("SELECT ah FROM AccountHolder ah WHERE name = :name", AccountHolder::class.java)
@@ -21,10 +36,10 @@ class AccountHolderService (@PersistenceContext val entityManager: EntityManager
 //            null
 //        }
 //    }
-
-    @Transactional
-    fun addAccountHolder(ah: AccountHolder) : AccountHolder {
-        entityManager.persist(ah)
-        return ah
-    }
-}
+//
+//    @TransactionalAdvice
+//    fun addAccountHolder(ah: AccountHolder) : AccountHolder {
+//        entityManager.persist(ah)
+//        return ah
+//    }
+//}
