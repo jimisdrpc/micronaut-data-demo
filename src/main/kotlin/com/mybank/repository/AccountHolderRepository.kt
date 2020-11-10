@@ -8,5 +8,5 @@ import io.micronaut.data.annotation.*
 @Repository
 interface AccountHolderRepository: CrudRepository<AccountHolder, Long> {
     @Executable
-    fun find(title: String): AccountHolder
+    fun find(name: String): AccountHolder
 }

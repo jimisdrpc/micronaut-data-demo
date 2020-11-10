@@ -25,6 +25,7 @@ micronaut {
 }
 
 dependencies {
+    annotationProcessor("io.micronaut:micronaut-validation")
     implementation("io.micronaut:micronaut-validation")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}")
     implementation("org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}")
@@ -42,6 +43,9 @@ dependencies {
     //https://micronaut-projects.github.io/micronaut-data/latest/guide/
     annotationProcessor("io.micronaut.data:micronaut-data-processor:2.1.1")
     implementation("io.micronaut.data:micronaut-data-hibernate-jpa:2.1.1")
+
+    //https://docs.micronaut.io/snapshot/guide/index.html#datavalidation
+    implementation("io.micronaut.beanvalidation:micronaut-hibernate-validator")
 
     runtimeOnly("ch.qos.logback:logback-classic")
     runtimeOnly("com.fasterxml.jackson.module:jackson-module-kotlin")
